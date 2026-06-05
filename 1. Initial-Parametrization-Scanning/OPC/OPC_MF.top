@@ -1,0 +1,10 @@
+ #include "./OPC_MF.itp"
+ 
+ [ system ]
+ OPC_MF
+ 
+ [ molecules ]
+ MM  1
+ FF  3
+ SOL 800
+ 
