@@ -1,0 +1,22 @@
+#!/bin/bash
+
+#SBATCH -N 1
+#SBATCH -n node
+#SBATCH -p short
+#SBATCH -J name1
+#SBATCH -t 36:00:00
+#SBATCH -o name1-out.dat
+#SBATCH -e name1-err.dat
+
+nam=name
+for num in $(seq 1 1 50)
+do
+    if [ -s input_$nam.dat ]; then
+        cp -r start An_$nam-$num; cd An_$nam-$num
+        cp -r ../run_start1 run_start1_$num.dat
+        sed -i "s/numb/$num/g" ./run*
+        chmod +x ./*; ./run1.sh; cd ../
+    else
+        exit
+    fi
+done

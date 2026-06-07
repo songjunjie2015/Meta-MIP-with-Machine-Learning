@@ -1,0 +1,29 @@
+#!/bin/bash
+
+#SBATCH -N 1
+#SBATCH -n node
+#SBATCH -p short
+#SBATCH -J name0000
+#SBATCH -t 36:00:00
+#SBATCH -o name0000-out.dat
+#SBATCH -e name0000-err.dat
+
+nam=name
+num=1
+tim=0
+while [ 1 ]
+do
+    if [ -e ./An_$nam-$num ]; then
+        tim=0
+        cd An_$nam-$num; chmod +x ./*
+        num=$[num+1]; ./run0.sh; cd ../
+    else
+        sleep 1m
+        tim=$[tim+1]
+        if [ $tim -lt 300 ]; then
+            echo "NO.$num: run0.sh wait $tim minutes" >> ./wait_information.dat
+        else
+            exit
+        fi
+    fi
+done
