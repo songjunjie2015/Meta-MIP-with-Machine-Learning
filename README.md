@@ -31,13 +31,13 @@ gmx rdf -f OPC3_MFmd.xtc -n OPC3_MF.ndx -o a1.xvg -cn a2.xvg -bin 0.0005 -b 1000
 
 ## **2. Machine-Learning**
 
-The parameter space scanning from the previous step yielded the data file `train_data.csv`. `ML-IOD.py` and `ML-CN.py` are ML python codes for IOD and CN, respectively, based on a multilayer perceptron (MLP). `valid.csv` is the validation data file used to evaluate the model performance. Here, we selected part of the data from `_J. Chem. Theory Comput._ 2021, 17 (4), 2342-2354` as the validation set and output the IOD and CN. To reduce the variability in ML accuracy, the results were averaged over five different `random_state` values for each run. The final results are presented in Tables S3 and S4 in the Supporting Information.
+The parameter space scanning from the previous step yielded the data file `train_data.csv`. `ML-IOD.py` and `ML-CN.py` are ML python codes for IOD and CN, respectively, based on a multilayer perceptron (MLP). `valid.csv` is the validation data file used to evaluate the model performance. Here, we selected part of the data from _J. Chem. Theory Comput._ 2021, 17 (4), 2342-2354 as the validation set and output the IOD and CN. To reduce the variability in ML accuracy, the results were averaged over five different `random_state` values for each run. The final results are presented in Tables S3 and S4 in the Supporting Information.
 
 Then, using this ML-accelerated approach, the `prediction_data.csv` file can be obtained. It features a finer division across the entire parameter space, containing approximately 7200 points in total.
 
 ## **3. Meta-MIP Algorithm**
 
-For the detailed working principle of the Meta-MIP algorithm, please refer to `_Phys. Chem. Chem. Phys._ 2021, 23 (3), 1956-1966`, `_Phys. Chem. Chem. Phys._ 2021, 23 (11), 6763-6774`, and https://github.com/Forestsene/LHS-BO-MIP/tree/main/lhs_bo_mip. Here, we provide an example of optimizing parameters for the OPC3 water model. Run the following command in the folder:
+For the detailed working principle of the Meta-MIP algorithm, please refer to _Phys. Chem. Chem. Phys._ 2021, 23 (3), 1956-1966, _Phys. Chem. Chem. Phys._ 2021, 23 (11), 6763-6774, and https://github.com/Forestsene/LHS-BO-MIP/tree/main/lhs_bo_mip. Here, we provide an example of optimizing parameters for the OPC3 water model. Run the following command in the folder:
 
 ```bash
 chmod +x start.sh
