@@ -1,0 +1,10 @@
+ #include "./OPC3_MF.itp"
+ 
+ [ system ]
+ MD box
+ 
+ [ molecules ]
+ CHOH 1350
+ MM 1
+ FF 3
+ 
